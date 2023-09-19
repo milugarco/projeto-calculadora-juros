@@ -3,6 +3,7 @@ const readlineSync = require('readline-sync')
 let valor
 let dias
 let percent
+let valorJuros
 let total
 let choose
 
@@ -58,9 +59,11 @@ function getDias() {
 
 function calcPercent() {
     if (dias >= 15) {
-        percent = (10 / 100) * Number(valor)
+        valorJuros = 10
+        percent = (valor / 100) * valorJuros
     } else {
-        percent = (5 / 100) * Number(valor)
+        valorJuros = 5
+        percent = (valor / 100) * valorJuros
     }
 
     return percent
@@ -74,7 +77,7 @@ function calcTotal() {
 function showResult() {
     console.log(`\nValor original da dívida: R$${valor}`)
     console.log(`Dias atrasados: ${dias}`)
-    console.log(`Taxa de juros: ${percent}%`)
+    console.log(`Taxa de juros: ${valorJuros}%`)
     console.log(`Valor Total com juros: R$${total}`)
 
     return true
